@@ -12,15 +12,26 @@ proxyoff () {
   export https_proxy=""
 }
 
+sudo apt update
+
+# utils
+sudo apt install -y man curl wget zip
+
 # vim
-sudo apt update \
-	&& sudo apt install -y vim
+sudo apt install -y vim
 
 # git
 sudo apt install -y git
 
-# essentials
-sudo apt install -y build-essential python3 golang-go cmake curl wget
+# programming essentials
+sudo apt install -y build-essential python3 cmake
+
+# golang
+wget -O - https://go.dev/dl/go1.22.6.linux-amd64.tar.gz | sudo tar -zx -C /usr/local
+
+# zsh
+sudo apt install -y zsh \
+	&& sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 # link config files
 DOTFILES_DIR="$(pwd)/dotfiles"
@@ -30,8 +41,4 @@ for file in "$DOTFILES_DIR"/.*; do
   target_file="$TARGET_DIR/$filename"
   ln -fs $file $target_file
 done
-
-# zsh
-sudo apt install -y zsh \
-	&& sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
