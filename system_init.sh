@@ -22,6 +22,15 @@ sudo apt install -y git
 # essentials
 sudo apt install -y build-essential python3 golang-go cmake curl wget
 
+# link config files
+DOTFILES_DIR="$(pwd)/dotfiles"
+TARGET_DIR="$HOME"
+for file in "$DOTFILES_DIR"/.*; do
+  filename=$(basename "$file")
+  target_file="$TARGET_DIR/$filename"
+  ln -fs $file $target_file
+done
+
 # zsh
 sudo apt install -y zsh \
 	&& sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
