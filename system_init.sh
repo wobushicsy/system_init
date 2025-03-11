@@ -24,7 +24,7 @@ sudo apt install -y vim
 sudo apt install -y git
 
 # programming essentials
-sudo apt install -y build-essential python3 cmake
+sudo apt install -y build-essential cmake python3 pip
 
 # golang
 wget -O - https://go.dev/dl/go1.22.6.linux-amd64.tar.gz | sudo tar -zx -C /usr/local
