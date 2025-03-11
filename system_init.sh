@@ -19,7 +19,8 @@ sudo apt update \
 # git
 sudo apt install -y git \
 	&& git config --global user.name wobushicsy \
-	&& git config --global user.email wobushicsy@gmail.com
+	&& git config --global user.email wobushicsy@gmail.com \
+	&& git config --global core.editor vim
 
 # essentials
 sudo apt install -y build-essential python3 golang-go cmake curl wget
