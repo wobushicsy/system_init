@@ -2,14 +2,14 @@
 
 # proxy
 proxyon () {
-	host_ip=$(cat /etc/resolv.conf | grep -oP "(?<=nameserver\ ).*")
-        export http_proxy="http://$host_ip:7890"
-        export https_proxy="http://$host_ip:7890"
+  host_ip=$(cat /etc/resolv.conf | grep -oP "(?<=nameserver\ ).*")
+  export http_proxy="http://$host_ip:7890"
+  export https_proxy="http://$host_ip:7890"
 }
 
 proxyoff () {
-        export http_proxy=""
-        export https_proxy=""
+  export http_proxy=""
+  export https_proxy=""
 }
 
 # vim
