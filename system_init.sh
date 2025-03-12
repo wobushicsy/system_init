@@ -49,3 +49,7 @@ for file in "$DOTFILES_DIR"/.*; do
   ln -fs $file $target_file
 done
 
+# wsl
+sudo cp ./configs/wsl.conf /etc \
+  && echo "WSL config changed, remember to restart WSL in powershell"
+
