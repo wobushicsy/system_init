@@ -33,6 +33,13 @@ wget -O - https://go.dev/dl/go1.22.6.linux-amd64.tar.gz | sudo tar -zx -C /usr/l
 sudo apt install -y zsh \
 	&& sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
+# docker
+curl -fsSL get.docker.com -o get-docker.sh && sudo sh get-docker.sh --mirror Aliyun \
+  && sudo systemctl enable docker && sudo systemctl start docker \
+  && sudo groupadd -f docker && sudo usermod -aG docker $USER
+sudo cp ./configs/daemon.json /etc/docker \
+  && sudo systemctl daemon-reload && sudo systemctl restart docker
+
 # link config files
 DOTFILES_DIR="$(pwd)/dotfiles"
 TARGET_DIR="$HOME"
