@@ -50,6 +50,8 @@ for file in "$DOTFILES_DIR"/.*; do
 done
 
 # wsl
+MSG="WSL config changed, remember to restart WSL in powershell by run
+wsl --terminate <Distro>"
 sudo cp ./configs/wsl.conf /etc \
-  && echo "WSL config changed, remember to restart WSL in powershell"
+  && echo $MSG
 
