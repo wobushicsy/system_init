@@ -34,7 +34,7 @@ wget -O - https://go.dev/dl/go1.22.6.linux-amd64.tar.gz | sudo tar -zx -C /usr/l
 # zsh
 proxyon
 sudo apt-get install -y zsh > /dev/null \
-	&& sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+	&& RUNZSH=no sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 proxyoff
 
 # docker
