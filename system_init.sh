@@ -14,26 +14,26 @@ proxyoff () {
 
 # prepare
 set -x
-sudo apt-get -qq update
+sudo apt-get update > /dev/null
 
 # utils
-sudo apt-get -qq install -y man curl wget zip
+sudo apt-get install -y man curl wget zip > /dev/null
 
 # vim
-sudo apt-get -qq install -y vim
+sudo apt-get install -y vim > /dev/null
 
 # git
-sudo apt-get -qq install -y git
+sudo apt-get install -y git > /dev/null
 
 # programming essentials
-sudo apt-get -qq install -y build-essential cmake python3 pip
+sudo apt-get install -y build-essential cmake python3 pip > /dev/null
 
 # golang
 wget -O - https://go.dev/dl/go1.22.6.linux-amd64.tar.gz | sudo tar -zx -C /usr/local
 
 # zsh
 proxyon
-sudo apt-get -qq install -y zsh \
+sudo apt-get install -y zsh > /dev/null \
 	&& sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 proxyoff
 
