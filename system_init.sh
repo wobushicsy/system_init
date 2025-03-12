@@ -14,33 +14,35 @@ proxyoff () {
 
 # prepare
 set -x
-sudo apt update
+sudo apt-get -qq update
 
 # utils
-sudo apt install -y man curl wget zip
+sudo apt-get -qq install -y man curl wget zip
 
 # vim
-sudo apt install -y vim
+sudo apt-get -qq install -y vim
 
 # git
-sudo apt install -y git
+sudo apt-get -qq install -y git
 
 # programming essentials
-sudo apt install -y build-essential cmake python3 pip
+sudo apt-get -qq install -y build-essential cmake python3 pip
 
 # golang
 wget -O - https://go.dev/dl/go1.22.6.linux-amd64.tar.gz | sudo tar -zx -C /usr/local
 
 # zsh
 proxyon
-sudo apt install -y zsh \
+sudo apt-get -qq install -y zsh \
 	&& sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 proxyoff
 
 # docker
+proxyon
 curl -fsSL get.docker.com -o get-docker.sh && sudo sh get-docker.sh --mirror Aliyun \
   && sudo systemctl enable docker && sudo systemctl start docker \
   && sudo groupadd -f docker && sudo usermod -aG docker $USER
+proxyoff
 sudo cp ./configs/daemon.json /etc/docker \
   && sudo systemctl daemon-reload && sudo systemctl restart docker
 
