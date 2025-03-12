@@ -2,6 +2,6 @@
 
 run the following command
 ``` shell
-sh system_init.sh > /dev/null
+sh system_init.sh
 ```
 
