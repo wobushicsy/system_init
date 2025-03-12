@@ -12,6 +12,8 @@ proxyoff () {
   export https_proxy=""
 }
 
+# prepare
+set -x
 sudo apt update
 
 # utils
