@@ -14,6 +14,7 @@ proxyoff () {
 
 # prepare
 set -x
+proxyoff
 sudo apt-get update > /dev/null
 
 # utils
@@ -34,12 +35,12 @@ wget -O - https://go.dev/dl/go1.22.6.linux-amd64.tar.gz | sudo tar -zx -C /usr/l
 # zsh
 proxyon
 sudo apt-get install -y zsh > /dev/null \
-	&& RUNZSH=no sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+	&& CHSH=yes RUNZSH=no sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" > /dev/null
 proxyoff
 
 # docker
 proxyon
-curl -fsSL get.docker.com -o get-docker.sh && sudo sh get-docker.sh --mirror Aliyun \
+curl -fsSL get.docker.com -o /tmp/get-docker.sh && sudo sh /tmp/get-docker.sh --mirror Aliyun \
   && sudo systemctl enable docker && sudo systemctl start docker \
   && sudo groupadd -f docker && sudo usermod -aG docker $USER
 proxyoff
@@ -58,8 +59,7 @@ for file in "$DOTFILES_DIR"/.*; do
 done
 
 # wsl
-MSG="WSL config changed, remember to restart WSL in powershell by run
-wsl --terminate <Distro>"
+MSG="WSL config changed, remember to restart WSL in powershell by run\nwsl --terminate <Distro>"
 sudo cp ./configs/wsl.conf /etc \
-  && echo $MSG >&2
+  && echo -e $MSG >&2
 
