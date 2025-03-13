@@ -41,7 +41,7 @@ proxyoff
 
 # docker
 proxyon
-curl -fsSL get.docker.com -o /tmp/get-docker.sh && sudo sh /tmp/get-docker.sh --mirror Aliyun \
+curl -fsSL get.docker.com -o /tmp/get-docker.sh && sudo sh /tmp/get-docker.sh --mirror Aliyun > /dev/null \
   && sudo systemctl enable docker && sudo systemctl start docker \
   && sudo groupadd -f docker && sudo usermod -aG docker $USER
 proxyoff
