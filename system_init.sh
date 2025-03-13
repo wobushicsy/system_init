@@ -33,9 +33,10 @@ sudo apt-get install -y build-essential cmake python3 pip > /dev/null
 wget -O - https://go.dev/dl/go1.22.6.linux-amd64.tar.gz | sudo tar -zx -C /usr/local
 
 # zsh
+INSTALL=https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh
 proxyon
 sudo apt-get install -y zsh > /dev/null \
-	&& CHSH=yes RUNZSH=no sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" > /dev/null
+	&& curl -fsSL "$INSTALL" | CHSH=yes RUNZSH=no sh > /dev/null
 proxyoff
 
 # docker
